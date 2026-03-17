@@ -32,10 +32,23 @@ if ($args.Count -gt 0) {
     $taskList += 'all'
 }
 
+$defaultFilesProject = "Dotnet.DefaultFiles"
+
+if (-not (Test-Path "$defaultFilesProject")) {
+    Write-Host "Dotnet.DefaultFiles not found. Cloning from GitHub..."
+    Push-Location ..
+    git clone https://github.com/TirsvadCLI/Dotnet.DefaultFiles.git
+    Pop-Location
+} else {
+    Write-Host "Dotnet.DefaultFiles already exists. Pulling latest changes from GitHub..."
+    Push-Location ..
+    git pull origin main
+    Pop-Location
+}
+
 # Define the root path where the original files are located
 #$defaultFilesRoot = "..\Dotnet.DefaultFiles"
 # get real path of defaultFilesRoot
-$defaultFilesProject = "Dotnet.DefaultFiles"
 $defaultFilesRoot = (Get-Item "..\$defaultFilesProject").FullName
 
 $Directories = @(
@@ -63,13 +76,39 @@ $toCopy = @(
     ".gitignore"
 )
 
-function EnsureDirectoriesExist {
+$cleanArchitectureDomainDirectories = @(
+    "src/Domain/Entities",
+    "src/Domain/Interfaces",
+    "src/Domain/ValueObjects"
+)
+
+$cleanArchitectureApplicationDirectories = @(
+    "src/Application/Interfaces",
+    "src/Application/Services",
+    "src/Application/Managers",
+    "src/Application/Helpers",
+    "src/Application/DTOs",
+    "src/Application/Mappers"
+)
+
+$cleanArchitectureInfrastructureDirectories = @(
+    "src/Infrastructure/Persistents",
+    "src/Infrastructure/Persistents/Configurations",
+    "src/Infrastructure/Repositories"
+)
+
+function CreateDirectories {
     param (
-        [string[]]$Directories
+        [string[]]$Directories,
+        [bool]$AddGitkeep = $false
     )
     foreach ($dir in $Directories) {
         if (-not (Test-Path $dir)) {
             New-Item -ItemType Directory -Path $dir | Out-Null
+            if ($AddGitkeep) {
+                $gitkeepPath = Join-Path -Path $dir -ChildPath ".gitkeep"
+                New-Item -ItemType File -Path $gitkeepPath | Out-Null
+            }
             Write-Host "Created $dir directory."
         } else {
             Write-Host "$dir directory already exists. Skipping."
@@ -187,6 +226,9 @@ function CreateCleanArchitectureProjects {
             Write-Host "$($proj.Name) project already exists in $($proj.Path). Skipping."
         }
     }
+    CreateDirectories -Directories $cleanArchitectureDomainDirectories -AddGitkeep $true
+    CreateDirectories -Directories $cleanArchitectureApplicationDirectories -AddGitkeep $true
+    CreateDirectories -Directories $cleanArchitectureInfrastructureDirectories -AddGitkeep $true
 }
 
 function CreateBlazorProject {
@@ -244,20 +286,16 @@ function CreateWebApiProject {
 }
 
 if (-not (Test-Path $defaultFilesRoot)) {
-    $archivePath = "$defaultFilesRoot.tar.gz"
-    curl -L -o $archivePath https://github.com/TirsvadCLI/Dotnet.DefaultFiles/archive/refs/tags/v0.1.1.tar.gz
-    tar -xzf $archivePath -C ..
-    $extractedDir = "..\Dotnet.DefaultFiles-0.1.1"
-    if (Test-Path $extractedDir) {
-        Rename-Item -Path $extractedDir -NewName (Split-Path $defaultFilesRoot -Leaf)
-    }
-    Remove-Item $archivePath
+    Write-Host "Dotnet.DefaultFiles not found. Cloning from GitHub..."
+    Push-Location ..
+    git clone https://github.com/TirsvadCLI/Dotnet.DefaultFiles.git
+    Pop-Location
 }
 
 if ($taskList -contains "files") {
-    EnsureDirectoriesExist -Directories $Directories
+    CreateDirectories -Directories $Directories
+    CopyDefaultFiles -Files $toCopy
     CreateHardLink -HardLinks $toHardlink
-    #CopyDefaultFiles -Files $toCopy
 }
 
 if ($taskList -contains "arch") {
