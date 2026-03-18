@@ -67,15 +67,15 @@ if ($args.Count -gt 0) {
     $taskList += 'all'
 }
 
-$defaultFilesProject = "Dotnet.DefaultFiles"
+$defaultFilesProject = "TirsvadCLI.Dotnet.DefaultFiles"
 
 if (-not (Test-Path "$defaultFilesProject")) {
-    Write-Host "Dotnet.DefaultFiles not found. Cloning from GitHub..."
+    Write-Host "TirsvadCLI.Dotnet.DefaultFiles not found. Cloning from GitHub..."
     Push-Location ..
     git clone https://github.com/TirsvadCLI/Dotnet.DefaultFiles.git
     Pop-Location
 } else {
-    Write-Host "Dotnet.DefaultFiles already exists. Pulling latest changes from GitHub..."
+    Write-Host "TirsvadCLI.Dotnet.DefaultFiles already exists. Pulling latest changes from GitHub..."
     Push-Location ..
     git pull origin main
     Pop-Location
@@ -90,6 +90,7 @@ $Directories = @(
     ".github",
     ".github/instructions",
     ".github/prompts",
+    ".github/agents",
     "src",
     "tests",
     "docs",
