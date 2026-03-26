@@ -27,11 +27,13 @@ Dotnet.DefaultFiles serves as a starting point for .NET development. It includes
 3. Download and run script to scaffold:
   - Scaffold a new solution with Clean Architecture principles:
   ```powershell
-  iex (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/TirsvadCLI/Dotnet.DefaultFiles/refs/heads/main/setupSolutionCleanArchentectureCSharp.ps1')
+  Invoke-WebRequest -Uri "https://raw.githubusercontent.com/TirsvadCLI/Dotnet.DefaultFiles/refs/heads/main/setupSolutionCleanArchentectureCSharp.ps1" -OutFile "setupSolutionCleanArchentectureCSharp.ps1"
+  .\setupSolutionCleanArchentectureCSharp.ps1
   ```
   - Scaffold a new Blazor project with Clean Architecture principles and WebApi:
   ```powershell
-  iex (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/TirsvadCLI/Dotnet.DefaultFiles/refs/heads/main/setupSolutionCleanArchentectureCSharp.ps1 -Blazor -Api')
+  Invoke-WebRequest -Uri "https://raw.githubusercontent.com/TirsvadCLI/Dotnet.DefaultFiles/refs/heads/main/setupSolutionCleanArchentectureCSharp.ps1" -OutFile "setupSolutionCleanArchentectureCSharp.ps1"
+  .\setupSolutionCleanArchentectureCSharp.ps1 -Blazor -Api
   ```
 
 This will create the recommended folder structure, add default files, and configure the solution for Clean Architecture.
