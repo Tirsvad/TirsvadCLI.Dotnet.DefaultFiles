@@ -416,6 +416,11 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Build Output
+/g
+
+# Static files
 /docs/doxygen/html
 /docs/doxygen/latex
 /src/WebUI/WebUI/wwwroot/projects/**
