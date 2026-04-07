@@ -20,7 +20,7 @@ When evaluating software using the FURPS+ model, the following criteria should b
 1. **Performance**: The software should perform efficiently, with fast response times and minimal resource usage.
 1. **Supportability**: The software should be easy to maintain and support, with clear documentation and diagnostic capabilities.
 1. **+ (Plus)**: The "+" in FURPS+ represents additional quality attributes that may be relevant to specific projects, such as security, scalability, and compatibility.
-    1. **Implement ability**: The software should be feasible to implement within the given constraints, such as time, budget, and technical capabilities.
+    1. **Implementability**: The software should be feasible to implement within the given constraints, such as time, budget, and technical capabilities.
     1. **Interface**: The software should have well-defined interfaces that allow for easy integration with other systems and components.
     1. **Operability**: The software should be easy to operate and manage, with clear monitoring and logging capabilities.
     1. **Packaging**: The software should be packaged in a way that allows for easy distribution and installation.

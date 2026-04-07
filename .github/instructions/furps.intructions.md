@@ -1,8 +1,7 @@
 ---
 description: 'FURPS is a software quality model that categorizes software attributes into five main categories: Functionality, Usability, Reliability, Performance, and Supportability. It is used to evaluate and improve the quality of software products.'
 applyTo: 'docs/furps.md'
-references:
-  - docs/quality-criteria/OOA/qc-furps.md
+reference: 'docs/quality-criteria/ooa/qc-furps.md
 ---
 
 # Instructions (Summary)

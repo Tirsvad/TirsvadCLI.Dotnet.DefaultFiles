@@ -8,6 +8,7 @@ tools:
   - search
   - lookup
   - evaluate
+  - update/crossReference
 references:
   - docs/bc.md
   - docs/furps.md

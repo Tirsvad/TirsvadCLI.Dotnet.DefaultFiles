@@ -1,7 +1,7 @@
 ---
 description: ' Business Case (BC) quality requirements and template for project documentation.'
 applyTo: '/docs/bc.md' and '/docs/bc.*.md'
-reference: '/docs/quality-criteria/qc-bc.md'
+reference: 'docs/quality-criteria/ooa/qc-bc.md'
 ---
 
 # DM Instructions (Summary)
@@ -25,7 +25,7 @@ reference: '/docs/quality-criteria/qc-bc.md'
 ## Change log
 | Version | Date       | Description              | Author     |
 |---------|------------|--------------------------|------------|
-| 0001    | <today date in format yyyy-mm-dd> | Initial                  | project owner |
+| 0001    | <today date in format yyyy-mm-dd> | Initial                  | <Insert Author Name> |
 
 ## Executive Summary
 
