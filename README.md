@@ -10,7 +10,6 @@ This repository provides a template for initializing .NET projects with default 
 - [Setup & Usage](#setup--usage)
 - [Script Arguments and Usage](#script-arguments-and-usage)
 - [Default Files Included](#default-files-included)
-- [Workflow](#workflow)
 
 ## Overview
 
@@ -36,7 +35,7 @@ Dotnet.DefaultFiles serves as a starting point for .NET development. It includes
   - Scaffold a new Blazor project with Clean Architecture principles and WebApi:
   ```powershell
   Invoke-WebRequest -Uri "https://raw.githubusercontent.com/TirsvadCLI/Dotnet.DefaultFiles/refs/heads/main/setupSolutionCleanArchentectureCSharp.ps1" -OutFile "setupSolutionCleanArchentectureCSharp.ps1"
-  .\setupSolutionCleanArchentectureCSharp.ps1 -Blazor -Api
+  .\setupSolutionCleanArchentectureCSharp.ps1 -Blazor -WebApi
   ```
 
 This will create the recommended folder structure, add default files, and configure the solution for Clean Architecture.
