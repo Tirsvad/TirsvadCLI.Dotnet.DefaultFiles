@@ -80,7 +80,7 @@ if (-not ($WebApi -or $Blazor -or $Help -or $Files -or $Arch)) {
     .PARAMETER Help
         Switch. If specified, includes help task.
 #>
-function Create-TaskList {
+function Build-TaskList {
   param (
     [switch]$Files,
     [switch]$Arch,
@@ -104,9 +104,10 @@ function Create-TaskList {
   return $taskList
 }
 
-<#
-    Displays usage instructions for the script.
-#>
+<#*
+ * @brief Displays usage instructions for the script.
+ * @details Provides information on available switches and parameters.
+ #>
 function Write-help {
   Write-Host "Usage: setupSolutionCleanArchentectureCSharp.ps1 Command"
   Write-Host "Switches:"
@@ -124,12 +125,6 @@ function Write-help {
 }
 
 <#
-  This function checks for the presence of the default files directory.
-  If it doesn't exist, it clones the repository from GitHub.
-  If it does exist, it pulls the latest changes.
-  If a custom path is provided, it validates that the path exists.
-#>
-<#
     Checks for the presence of the default files directory.
     If it doesn't exist, clones the repository from GitHub.
     If it does exist, pulls the latest changes.
@@ -137,7 +132,7 @@ function Write-help {
     .PARAMETER DefaultFilesRoot
         String. Optional path to the default files root directory.
 #>
-function Fetch-DefaultSource {
+function Get-DefaultSource {
   param (
     [string]$DefaultFilesRoot
   )
@@ -185,8 +180,8 @@ if ($Help) {
   exit
 }
 
-$taskList = Create-TaskList -Files:$Files -Arch:$Arch -Blazor:$Blazor -WebApi:$WebApi -Help:$Help
-$DefaultFilesRoot = Fetch-DefaultSource -DefaultFilesRoot $DefaultFilesRoot
+$taskList = Build-TaskList -Files:$Files -Arch:$Arch -Blazor:$Blazor -WebApi:$WebApi -Help:$Help
+$DefaultFilesRoot = Get-DefaultSource -DefaultFilesRoot $DefaultFilesRoot
 
 Write-Host "DefaultFiles root: $DefaultFilesRoot"
 
@@ -257,7 +252,7 @@ $cleanArchitectureInfrastructureDirectories = @(
     .PARAMETER AddGitkeep
         Boolean. If true, adds a .gitkeep file to each directory.
 #>
-function CreateDirectories {
+function Build-Directories {
   param (
     [string[]]$Directories,
     [bool]$AddGitkeep = $false
@@ -376,9 +371,9 @@ function CreateCleanArchitectureProjects {
       Write-Host "$($proj.Name) project already exists in $($proj.Path). Skipping."
     }
   }
-  CreateDirectories -Directories $cleanArchitectureDomainDirectories -AddGitkeep $true
-  CreateDirectories -Directories $cleanArchitectureApplicationDirectories -AddGitkeep $true
-  CreateDirectories -Directories $cleanArchitectureInfrastructureDirectories -AddGitkeep $true
+  Build-Directories -Directories $cleanArchitectureDomainDirectories -AddGitkeep $true
+  Build-Directories -Directories $cleanArchitectureApplicationDirectories -AddGitkeep $true
+  Build-Directories -Directories $cleanArchitectureInfrastructureDirectories -AddGitkeep $true
 }
 
 <#
@@ -448,7 +443,7 @@ function CreateWebWebApiProject {
 dotnet new install xunit.v3.templates | Out-Null
 
 if ($taskList -contains "files") {
-  CreateDirectories -Directories $Directories
+  Build-Directories -Directories $Directories
   CopyFileAndFolders -Files $toCopy
   CopyFileAndFolders -Files $toCopyByForce -Force $true
 }
