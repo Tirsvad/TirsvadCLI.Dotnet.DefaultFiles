@@ -1,18 +1,17 @@
 ---
-description: Template for documenting project risks and mitigations, categorized with unique IDs.
+description: Generate and manage project risks and mitigations using the provided template and instructions.
 name: Risk & Mitigation Agent Template
 tools: 
   - new
   - edit/editFiles
   - search
   - lookup
+  - evaluate
   - delete
   - validate/mermaid
   - update/glossary
   - update/crossReference
 references:
-  - docs/furps.md
-  - docs/kpi.md
   - .github/instructions/risk-mitigation.instructions.md
   - docs/quality-criteria/ooa/qc-risk-mitigation.md
 ---
@@ -31,15 +30,18 @@ This agent MUST comply with the Risk & Mitigation instructions in `.github/instr
 # Workflow Triggers
 - On "Generate" or "Create" RISK: use `new` tool with path from naming rules.
 - On "Update" or "Edit" RISK: use `edit/editFiles` with the RISK file path and specific changes.
-- After any change make sure to update the risk register and related documentation as needed. We have some Risk & Mitigation in bc.md need to be updated accordingly.
+- On "Evaluate" or "Assess" RISK: use the `evaluate` tool with the RISK file path and specific evaluation criteria.
+- After any change make sure to update the risk register and related documentation as needed.
 
-This markdown file is a template for documenting project risks and mitigations, split into categories, with unique IDs for each risk.
+## Tool Usage
+- Use `new` to create RISK files; do not output raw markdown in chat.
+- Use `edit/editFiles` for RISK updates.
+- Ensure the target directory exists before file creation; create directory structure if missing.
 
-## Instructions
-- Identify risk categories (e.g., Technical, Business, Security, Compliance, Operational).
-- For each risk, assign a unique ID using the format RSK-[CATEGORY]-[NUMBER] (e.g., RSK-TECH-001 for Technical, RSK-BUS-001 for Business, RSK-SEC-001 for Security, RSK-COMP-001 for Compliance, RSK-OP-001 for Operational).
-- Document the risk, its category, description, impact, likelihood, mitigation, and status.
-- Reference docs/furps.md and docs/kpi.md for quality and KPI considerations.
+## Language Handling
+- Use professional English for all metadata, versioning, and the default RISK file.
+- If the product owner’s domain language is not English, also generate a RISK file in that language (append language code, e.g., `.<language_code>.md`) and include a `## Terms Translation` section.
+- Both English and translated RISK files must be present and up to date.
 
----
-Update this file as you identify and manage new risks and mitigations.
+## Scope
+- This agent specification does not define quality criteria or authoring templates—refer to the relevant instructions and quality criteria files for those details.

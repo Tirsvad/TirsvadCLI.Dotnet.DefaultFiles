@@ -43,7 +43,7 @@ references:
 
 ## Language Handling
 - Use professional English for all metadata, versioning, and the default DM file.
-- If the product owner’s domain language is not English, also generate a DM file in that language (append language code, e.g., `.da.md` for Danish) and include a `## Terms Translation` section.
+- If the product owner’s domain language is not English, also generate a DM file in that language (append language code, e.g., `.<language code>.md`) and include a `## Terms Translation` section.
 - Both English and translated DM files must be present and up to date.
 
 ## Compliance

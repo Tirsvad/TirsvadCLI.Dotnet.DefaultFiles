@@ -25,31 +25,47 @@ reference: 'docs/quality-criteria/ooa/qc-bc.md'
 ## Change log
 | Version | Date       | Description              | Author     |
 |---------|------------|--------------------------|------------|
-| 0001    | <today date in format yyyy-mm-dd> | Initial                  | <Insert Author Name> |
+| 0001    | [insert date of now in format yyyy-mm-dd] | Initial                  | [Insert Author Name] |
 
 ## Executive Summary
+[Insert a brief summary of the business case, including the problem statement, proposed solution, and expected benefits.]
 
 ## Problem Statement
+[Insert problem statement describing the issue or opportunity that the project aims to address.]
 
 ## Objectives
 
-- **Technical Requirements:**
+**Technical Requirements:**
+- [Insert technical requirement 1]
+- [Insert technical requirement 2]
 
-- **Business Requirements:**
+**Business Requirements:**
+- [Insert business requirement 1]
+- [Insert business requirement 2]
 
 **Phases:**
+- First phase:
+  1. [Insert first phase objective or deliverable]
+  2. [Insert second phase objective or deliverable]
+- Second phase:
+  1. [Insert first phase objective or deliverable]
+  2. [Insert second phase objective or deliverable]
+- Third phase:
+  1. [Insert first phase objective or deliverable]
+  2. [Insert second phase objective or deliverable]
 
 ## Options and Alternatives (0-scenario, 1-scenario, 2-scenario)
 
 ## Cost Benefit Analysis
 | Option | Cost | Benefit |
 |--------|------|---------|
-
-## Risks and Mitigations
-
-## Timeline
+| 0-scenario | [Insert Cost] | No change, status quo maintained |
+| 1-scenario | [Insert Cost] | [Insert Benefit] |
+| 2-scenario | [Insert Cost] | [Insert Benefit] |
 
 ## Success Criteria
+- [Insert success criterion 1]
+- [Insert success criterion 2]
 
 ```
 
