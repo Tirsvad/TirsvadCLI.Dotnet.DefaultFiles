@@ -132,6 +132,20 @@ MyBlazorApp/
 
 For more details, see the [Microsoft documentation](https://learn.microsoft.com/aspnet/core/fundamentals/configuration/) and Clean Architecture guides.
 
+## Copilot Agents, Instructions and Prompts
+The repository also includes Copilot agents, instructions and prompts to assist developers in generating artifacts, code and documentation. These resources can be found in the `.github/` directory and are designed to enhance productivity and ensure consistency across projects.
+
+### Agent Examples:
+#### Domain Model Agent
+Generates, validates, and maintains domain model (DM) documentation in markdown, following strict content, structure, and naming conventions for clarity and consistency. It analyses business case, identifies domain entities and relationships, and produces DM artifacts that align with the project’s domain language and requirements. The agent ensures that DM files are correctly named, versioned, and structured according to the instructions, and it validates the content for completeness and clarity without evaluating quality criteria.
+
+**Example Usage:**
+```
+#dm-artifact.agent.md
+Create DM
+```
+
+
 ## License
 Distributed under the AGPL-3.0 [License][license-url].
 

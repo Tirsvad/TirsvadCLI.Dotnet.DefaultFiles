@@ -12,6 +12,8 @@ tools:
 references:
   - docs/bc.md
   - docs/furps.md
+  - docs/risk-and-mitigation.md
+  - docs/glossary.md
   - .github/instructions/furps.instructions.md
   - docs/quality-criteria/ooa/qc-furps.md
 ---
@@ -26,8 +28,10 @@ references:
 - Ensure correct file naming, versioning, and language handling as per instructions.
 - Add new terms to glossary files when instructed.
 - Validate FURPS artifacts for completeness, clarity, and template compliance (not quality criteria).
-- Trigger the KPI Agent to update corresponding KPI artifacts after any FURPS artifact change.
+- Trigger the `kpi-artifact.agent.md` to create / update corresponding KPI artifacts after any FURPS artifact change.
+- Treat identified risks as actionable tasks: when a FURPS artifact is changed, trigger the creation or update of a corresponding risk entry or task in the risk register.
 - Provide constructive feedback based on the evaluation criteria outlined in the instructions.
+- For Risk Management, ensure KPIs explicitly include metrics for high and medium level risks (e.g., count of high risks, count of medium risks, mitigation status for each).
 
 ## Workflow Triggers
 - On "Evaluate" or "Assess" FURPS artifact: use the `evaluate` tool with the artifact file path and specific evaluation criteria.

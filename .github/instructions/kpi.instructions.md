@@ -7,6 +7,8 @@ reference: 'docs/quality-criteria/ooa/qc-kpi.md'
 # KPI Instructions (Summary)
 - Use the provided KPI markdown template / examples.
 - Replace all placeholders with project-specific content.
+- Ensure KPIs are specific, measurable, achievable, relevant, and time-bound (SMART).
+- IDs for KPIs should follow the format `KPI-[Category shortname]-[Number]` (e.g., KPI-F-001).
 - Store KPI files in `docs/` as `kpi.md`.
 - Increment version numbers for significant changes; keep only the latest version in main, archive older versions
 - Include metadata, version log (with date, author), and use tables for KPI tracking.
@@ -31,8 +33,8 @@ reference: 'docs/quality-criteria/ooa/qc-kpi.md'
 ## KPI Tracking
 
 ### [KPI Category 1]
-| KPI Name           | Reference      |  Description                     | Target Value | Current Value | Status  |
-|--------------------|----------------|----------------------------------|--------------|---------------|---------|
-| [KPI 1]            | [REF-001]      | [Description of KPI 1]           | [Target Value] | [Current Value] | [Status] |
+| ID | KPI Name           |  Description                     | Target Value | Current Value | Status  | Measurement Interval | Reference      |
+|----|--------------------|----------------------------------|--------------|---------------|---------|--------------------|----------------|
+| KPI-[Category]-[] | [KPI 1] | [Description of KPI 1]           | [Target Value] | [Current Value] | [Status] | [Interval] | [FURPS-ID]      |
 
 ```
