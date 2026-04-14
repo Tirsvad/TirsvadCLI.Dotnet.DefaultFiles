@@ -39,15 +39,11 @@ jobs:
 
   copy-google-file:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Download Doxygen HTML artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: doxygen-html
-          path: ./docs/doxygen/html
+      - name: Create path for Doxygen HTML
+        run: mkdir -p ./docs/doxygen/html
       - name: Copy Google owners file
         run: cp ./tools/github-pages/google74ed2eefe62ffac5.html ./docs/doxygen/html/
       - name: Upload Doxygen HTML as artifact
@@ -58,12 +54,19 @@ jobs:
 
   deploy-github-pages:
     runs-on: ubuntu-latest
-    needs: copy-google-file
+    needs: 
+      - copy-google-file
+      - build-doxygen
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Download Doxygen HTML artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: doxygen-html
+          path: ./docs/doxygen/html
       - name: Download Doxygen HTML artifact
         uses: actions/download-artifact@v4
         with:
