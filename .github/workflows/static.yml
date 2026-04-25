@@ -43,10 +43,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Check for Google owners file
+        id: check
         run: |
-          if ! ls ./shared/github-pages/google*.html 1> /dev/null 2>&1; then
-            echo "No Google verification file found!"
-            exit 1
+          if ls ./shared/github-pages/google*.html 1> /dev/null 2>&1; then
+            echo "found=true" >> $GITHUB_OUTPUT
+          else
+            echo "::warning::No Google verification file found!"
+            echo "found=false" >> $GITHUB_OUTPUT
           fi
 
   copy-google-file:
@@ -58,8 +61,10 @@ jobs:
       - name: Create path for Doxygen HTML
         run: mkdir -p ./docs/doxygen/html
       - name: Copy Google owners file
+        if: needs.check-google-file.outputs.google_file_found == 'true'
         run: cp ./shared/github-pages/google*.html ./docs/doxygen/html/
       - name: Upload Doxygen HTML as artifact
+        if: needs.check-google-file.outputs.google_file_found == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: doxygen-html-with-google-file
@@ -81,6 +86,7 @@ jobs:
           name: doxygen-html
           path: ./docs/doxygen/html
       - name: Download Doxygen HTML artifact
+        if: needs.check-google-file.outputs.google_file_found == 'true'
         uses: actions/download-artifact@v4
         with:
           name: doxygen-html-with-google-file
