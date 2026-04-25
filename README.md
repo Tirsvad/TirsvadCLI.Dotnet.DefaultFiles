@@ -10,7 +10,6 @@
 <img  style="float: left; margin: 5px 10px 0 0;" src="https://raw.githubusercontent.com/TirsvadCLI/Logo/refs/heads/main/images/logo/64x64/logo.png">
 This repository provides a template for initializing .NET projects with default files and a setup script. It is designed to help developers quickly scaffold a new solution following Clean Architecture principles, including recommended folder structure, configuration, and build scripts.
 
-
 ## 📚 Table of Contents
 
 - [Overview](#overview)
@@ -150,6 +149,24 @@ MyBlazorApp/
 - `.gitignore`: Standard ignore rules
 - `nuget.config`: Custom NuGet feeds
 - Example scripts for setup and build
+
+<a name="github-folder"></a>
+## 📂 The `.github` Folder
+
+The `.github` directory contains configuration, automation, and documentation resources that support development workflows and code quality:
+
+- **Copilot Instructions & Agents**:  
+  - `.github/copilot-instructions.md` defines repository-wide rules for Copilot agents, including Clean Architecture conventions, folder structure, and documentation standards.
+  - `.github/instructions/` contains detailed instructions and prompts for Copilot agents, such as how to generate or validate domain models, documentation, and code artifacts.
+  - Agent prompt files (e.g., `dm-artifact.agent.md`) provide reusable templates for generating domain model documentation and other artifacts.
+- **Workflow & Community Files**:  
+  - GitHub Actions workflows (if present) automate CI/CD, testing, and other tasks.
+  - Issue and pull request templates help standardize contributions.
+  - Configuration files for repository settings and community standards.
+
+These resources ensure consistency, automate repetitive tasks, and provide guidance for both humans and AI agents working in the repository.
+
+For more details, see the `.github/` directory and referenced documentation.
 
 <a name="best-practices"></a>
 ## Best Practices
